@@ -1,5 +1,7 @@
 package com.leetCode.easy;
 
+import java.util.Arrays;
+
 /**
  * 删除排序数组中的重复项
  *
@@ -22,11 +24,23 @@ package com.leetCode.easy;
  */
 public class Solution {
     public static void main(String[] args) {
-
-    }
-    public int removeDuplicates(int[] nums) {
-        // TODO something
-        return 0;
+        int[] nums = new int[] {0,0,1,1,1,2,2,3,3,4};
+        int result = removeDuplicates(nums);
+        System.out.println("result:" + result + ",nums:" + Arrays.toString(nums));
     }
 
+    /**
+     * 双指针解法
+     * @param nums
+     * @return
+     */
+    public static int removeDuplicates(int[] nums) {
+        int right = 0;
+        for(int left=1; left< nums.length; left++) {
+            if (nums[right] != nums[left]) {
+                nums[++right] = nums[left];
+            }
+        }
+        return right;
+    }
 }

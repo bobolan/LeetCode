@@ -1,5 +1,7 @@
 package com.leetCode.easy;
 
+import java.util.Arrays;
+
 /**
  * 旋转数组
  *
@@ -24,10 +26,32 @@ package com.leetCode.easy;
  */
 public class Solution2 {
     public static void main(String[] args) {
+        int[] nums = new int[] {1,2,3,4,5,6,7};
+        int k = 10;
+        rotate(nums, k);
+        System.out.println(Arrays.toString(nums));
+    }
+
+    /**
+     * 旋转数组--多次反转解法
+     * @param nums
+     * @param k
+     */
+    public static void rotate(int[] nums, int k) {
+        k%=nums.length;
+        reverse(nums, 0, nums.length-1);
+        reverse(nums, 0, k-1);
+        reverse(nums, k, nums.length-1);
 
     }
 
-    public static void rotate(int[] nums, int k) {
-
+    private static void reverse(int[] nums, int begin, int end) {
+        while (begin<end) {
+            int temp = nums[begin];
+            nums[begin] = nums[end];
+            nums[end] = temp;
+            begin++;
+            end--;
+        }
     }
 }

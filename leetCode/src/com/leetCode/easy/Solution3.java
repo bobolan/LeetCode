@@ -1,5 +1,8 @@
 package com.leetCode.easy;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * 存在重复元素
  *
@@ -20,4 +23,29 @@ package com.leetCode.easy;
  *
  */
 public class Solution3 {
+    public static void main(String[] args) {
+        int[] nums = {1,1,1,3,3,4,3,2,4,2};
+        System.out.println(containsDuplicate(nums));
+
+        int[] nums1 = {1,2,3,4};
+        System.out.println(containsDuplicate(nums1));
+
+        int[] nums2 = {1,2,3,1};
+        System.out.println(containsDuplicate(nums2));
+    }
+
+    /**
+     * 利用HashSet特性的解法
+     * @param nums
+     * @return
+     */
+    public static boolean containsDuplicate(int[] nums) {
+        Set<Integer> temp = new HashSet<>();
+        for (int num: nums) {
+            if(!temp.add(num)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
